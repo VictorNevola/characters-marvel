@@ -1,20 +1,24 @@
-import { useTheme } from 'next-themes';
+import { useTheme } from "next-themes";
+import Image from "next/image";
 
-import { SunIconBtn, MoonIconBtn } from "./style";
+import { IconWrapper } from "./style";
 
-import light from "@/styles/themes/light";
-import dark from "@/styles/themes/dark";
+import SunIcon from "@/public/icons/sun.svg";
+import MoonIcon from "@/public/icons/moon.svg";
 
 const ToggleTheme = () => {
-
   const { theme, setTheme } = useTheme();
 
   return (
     <>
       {theme === "dark" ? (
-        <SunIconBtn width={24} height={24} role="button" onClick={() => setTheme('light')} />
+        <IconWrapper onClick={() => setTheme("light")}>
+          <Image src={SunIcon} width={24} height={24} alt="sunIcon" />
+        </IconWrapper>
       ) : (
-        <MoonIconBtn width={24} height={24} role="button" onClick={() => setTheme('dark')} />
+        <IconWrapper onClick={() => setTheme("dark")}>
+          <Image src={MoonIcon} width={24} height={24} alt="moonIcon" />
+        </IconWrapper>
       )}
     </>
   );

@@ -1,12 +1,8 @@
 import styled from "styled-components";
-import { SunIcon, MoonIcon } from "@heroicons/react/solid";
 
-export const SunIconBtn = styled(SunIcon)`
-  display: inline-block;
+export const IconWrapper = styled.button`
   cursor: pointer;
-`;
-
-export const MoonIconBtn = styled(MoonIcon)`
-  display: inline-block;
-  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
 `;
