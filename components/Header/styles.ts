@@ -10,5 +10,9 @@ export const HeaderNav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
+`;
 
+export const HeadertActions = styled.div`
+  display: flex;
+  align-items: center;
 `;
