@@ -5,7 +5,8 @@ export default createGlobalStyle`
   ${reset}
 
   body {
-    background: #fafafa;
+    background: ${props => props.theme.colors.background};
+    color: ${props => props.theme.colors.primary};
     font-family: 'Poppins', sans-serif;
   }
 `;
