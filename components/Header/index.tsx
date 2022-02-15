@@ -3,6 +3,7 @@ import { HeaderWrapper, HeaderNav } from "./styles";
 
 import Logo from "./logo";
 import ToggleTheme from "./toggleTheme";
+import SearchBar from "./search";
 
 const Header = () => {
   return (
@@ -10,6 +11,7 @@ const Header = () => {
       <Container>
         <HeaderNav> 
           <Logo />
+          <SearchBar />
           <ToggleTheme />
         </HeaderNav>
       </Container>
