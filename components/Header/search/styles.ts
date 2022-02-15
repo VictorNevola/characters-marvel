@@ -8,6 +8,7 @@ export const SearchBarWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   border: 1px solid ${(props) => props.theme.colors.tertiary};
+  background: #fff;
   border-radius: 4px;
   padding: 0px .875rem;
   max-width: 36.25rem;
