@@ -28,5 +28,5 @@ export const InputSearch = styled(DebounceInput)`
   background: none;
   padding: .75rem 0px;
   font-size: .875rem;
-  color: ${(props) => props.theme.colors.text};
+  color: #000;
 `;
