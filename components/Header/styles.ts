@@ -1,12 +1,14 @@
 import styled from "styled-components";
 
-export const HeaderContainer = styled.header`
+export const HeaderWrapper = styled.header`
+  background: ${props => props.theme.colors.primary};
+  color: ${props => props.theme.colors.tertiary};
+  padding: .75rem 0;
+`;
+
+export const HeaderNav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: ${props => props.theme.colors.secondary};
-  padding: 20px;
-  color: ${props => props.theme.colors.tertiary};
-  font-size: 1.5rem;
-  font-weight: bold;
+
 `;

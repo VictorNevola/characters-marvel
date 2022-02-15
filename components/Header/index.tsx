@@ -1,13 +1,19 @@
-import { HeaderContainer } from "./styles";
+import { Container } from "@/styles/utils";
+import { HeaderWrapper, HeaderNav } from "./styles";
 
+import Logo from "./logo";
 import ToggleTheme from "./toggleTheme";
 
 const Header = () => {
   return (
-    <HeaderContainer>
-      <h1> aqui é o header </h1>
-      <ToggleTheme />
-    </HeaderContainer>
+    <HeaderWrapper>
+      <Container>
+        <HeaderNav> 
+          <Logo />
+          <ToggleTheme />
+        </HeaderNav>
+      </Container>
+    </HeaderWrapper>
   )
 };
 
