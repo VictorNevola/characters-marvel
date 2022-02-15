@@ -1,8 +1,8 @@
 import { createGlobalStyle } from 'styled-components'
-import { normalize } from 'styled-normalize'
+import reset from 'styled-reset'
 
 export default createGlobalStyle`
-  ${normalize}
+  ${reset}
 
   body {
     background: #fafafa;
