@@ -23,6 +23,7 @@
       "@/hooks/*": ["hooks/*"],
       "@/public/*": ["public/*"],
       "@/store/*": ["store/*"],
+      "@/config/*": ["config/*"],
     }
   },
   "include": ["next-env.d.ts", "src/styles/styled.d.ts", "**/*.ts", "**/*.tsx"],
