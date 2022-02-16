@@ -1,7 +1,11 @@
 import axios, { AxiosResponse, Method } from "axios";
 import { setupCache } from "axios-cache-adapter";
 
-const publicKeyApi = "5ffffe799c3cb7b22a437df808f26220";
+const publicKeyApi = process.env.NEXT_PUBLIC_API_KEY_MARVEL;
+
+if(!publicKeyApi) {
+  throw new Error('Public Key API Marvel not found');
+}
 
 type ResponseFetch<T> = {
   data: T;
