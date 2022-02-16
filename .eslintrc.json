@@ -9,6 +9,11 @@
       "allowCallExpression": false,
       "allowLiteral": false,
       "allowObject": true
-    }]
+    }],
+    "react-hooks/exhaustive-deps": [
+      "warn", {
+        "additionalHooks": "(useRecoilCallback|useRecoilTransaction_UNSTABLE)"
+      }
+    ]
   }
 }

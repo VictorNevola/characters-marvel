@@ -15,12 +15,14 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "downlevelIteration": true,
     "paths": {
       "@/components/*": ["components/*"],
       "@/styles/*": ["styles/*"],
       "@/utils/*": ["utils/*"],
       "@/hooks/*": ["hooks/*"],
       "@/public/*": ["public/*"],
+      "@/store/*": ["store/*"],
     }
   },
   "include": ["next-env.d.ts", "src/styles/styled.d.ts", "**/*.ts", "**/*.tsx"],
