@@ -1,45 +1,38 @@
-import { ChangeEvent, useCallback, useEffect, useState } from "react";
-import { useRecoilState } from "recoil";
-import { SearchBarWrapper, IconSearch, InputSearch } from "./styles";
+import { ChangeEvent } from "react";
+import { useRecoilState, useRecoilValueLoadable } from "recoil";
+import { SearchBarWrapper, IconSearch, IconX, InputSearch } from "./styles";
 
-import { searchState } from "@/store/search";
-import fetch from "@/config/api";
+import { searchList, searchTerm } from "@/store/search";
 
 const SearchBar = () => {
-  const [search, setSearch] = useRecoilState(searchState);
+  const [search, setSearch] = useRecoilState(searchTerm);
+  const { state, contents } = useRecoilValueLoadable(searchList);
 
-  const handlerSearch = useCallback(async (termValue) => {
-    if (termValue.length > 0) {
-      const response = await fetch(`characters`, "GET", {
-        nameStartsWith: termValue,
-      });
-
-      setSearch({
-        searchTerm: termValue,
-        listCharacters: [response.data],
-      });
-    }
-
-    setSearch({
-      searchTerm: "",
-      listCharacters: [],
-    });
-
-  }, [setSearch]);  
-
-  console.log("search", search);
+  console.log("state", state);
+  console.log("contents", contents);
 
   return (
     <SearchBarWrapper>
       <InputSearch
-        minLength={4}
-        debounceTimeout={500}
+        minLength={2}
+        debounceTimeout={800}
         placeholder="Busque pelo seu herói"
+        value={search}
         onChange={({ target: { value } }: ChangeEvent<HTMLInputElement>) =>
-          handlerSearch(value)
+          setSearch(value)
         }
       />
-      <IconSearch height={22} width={22} color="#000000" />
+      {search.length > 0 ? (
+        <IconX
+          role="button"
+          height={22}
+          width={22}
+          color="#000000"
+          onClick={() => setSearch("")}
+        />
+      ) : (
+        <IconSearch role="button" height={22} width={22} color="#000000" />
+      )}
     </SearchBarWrapper>
   );
 };

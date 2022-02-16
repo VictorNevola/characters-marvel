@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { SearchIcon } from "@heroicons/react/solid";
+import { SearchIcon, XIcon } from "@heroicons/react/solid";
 
 import { DebounceInput } from "react-debounce-input";
 
@@ -10,7 +10,7 @@ export const SearchBarWrapper = styled.div`
   border: 1px solid ${(props) => props.theme.colors.tertiary};
   background: #fff;
   border-radius: 4px;
-  padding: 0px .875rem;
+  padding: 0px 0.875rem;
   max-width: 36.25rem;
   width: 100%;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -18,6 +18,12 @@ export const SearchBarWrapper = styled.div`
 
 export const IconSearch = styled(SearchIcon)`
   display: block;
+  cursor: pointer;
+`;
+
+export const IconX = styled(XIcon)`
+  display: block;
+  cursor: pointer;
 `;
 
 export const InputSearch = styled(DebounceInput)`
@@ -26,7 +32,7 @@ export const InputSearch = styled(DebounceInput)`
   border: none;
   outline: none;
   background: none;
-  padding: .75rem 0px;
-  font-size: .875rem;
+  padding: 0.75rem 0px;
+  font-size: 0.875rem;
   color: #000;
 `;
