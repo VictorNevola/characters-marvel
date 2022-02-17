@@ -12,11 +12,11 @@ const ToggleTheme = () => {
   return (
     <>
       {theme === "dark" ? (
-        <IconWrapper onClick={() => setTheme("light")}>
+        <IconWrapper onClick={() => setTheme("light")} data-cy="btn-change-to-light">
           <Image src={SunIcon} width={24} height={24} alt="" />
         </IconWrapper>
       ) : (
-        <IconWrapper onClick={() => setTheme("dark")}>
+        <IconWrapper onClick={() => setTheme("dark")} data-cy="btn-change-to-dark">
           <Image src={MoonIcon} width={24} height={24} alt="" />
         </IconWrapper>
       )}

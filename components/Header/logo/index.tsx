@@ -7,6 +7,7 @@ const Logo = () => {
       alt="Logo"
       width={98}
       height={38}
+      data-cy="logo"
     />
   )
 };

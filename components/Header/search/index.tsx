@@ -12,7 +12,7 @@ const SearchBar = () => {
   console.log("contents", contents);
 
   return (
-    <SearchBarWrapper>
+    <SearchBarWrapper data-cy="search">
       <InputSearch
         minLength={2}
         debounceTimeout={800}
@@ -29,9 +29,10 @@ const SearchBar = () => {
           width={22}
           color="#000000"
           onClick={() => setSearch("")}
+          data-cy="icon-close"
         />
       ) : (
-        <IconSearch role="button" height={22} width={22} color="#000000" />
+        <IconSearch role="button" height={22} width={22} color="#000000" data-cy="icon-search"/>
       )}
     </SearchBarWrapper>
   );
