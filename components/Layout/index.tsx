@@ -6,6 +6,8 @@ import GlobalStyles from "@/styles/globals";
 import light from "@/styles/themes/light";
 import dark from "@/styles/themes/dark";
 
+import Header from "@/components/Header";
+
 const Layout: FC = ({ children }) => {
   const { systemTheme, theme } = useTheme();
   const [mounted, setMounted] = useState(false);
@@ -20,6 +22,7 @@ const Layout: FC = ({ children }) => {
   return (
     <ThemeProvider theme={currentTheme}>
       <GlobalStyles />
+      <Header />
       {children}
     </ThemeProvider>
   );
