@@ -14,6 +14,12 @@ export const SearchBarWrapper = styled.div`
   max-width: 36.25rem;
   width: 100%;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin: 0 6px;
+  
+  @media(max-width: 768px) {
+    max-width: 16.25rem;
+    padding: 0px 0.475rem;
+  }
 `;
 
 export const IconSearch = styled(SearchIcon)`
@@ -35,4 +41,9 @@ export const InputSearch = styled(DebounceInput)`
   padding: 0.75rem 0px;
   font-size: 0.875rem;
   color: #000;
+
+  @media(max-width: 768px) {
+    padding: 0.4rem 0px;
+    font-size: 12px;
+  }
 `;

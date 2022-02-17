@@ -5,4 +5,6 @@ export const IconWrapper = styled.button`
   border: none;
   outline: none;
   background: none;
+  min-width: 34px;
+  padding: 0px;
 `;
