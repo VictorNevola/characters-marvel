@@ -21,11 +21,11 @@ const Home: NextPage = () => {
     <HomeWrapper>
       <Title>
         {searchText.length > 0 ? (
-          <TitleSpan>
+          <TitleSpan data-cy="title-page">
             Buscando por <strong> {searchText}</strong>
           </TitleSpan>
         ) : (
-          <TitleSpan> Personagens </TitleSpan>
+          <TitleSpan data-cy="title-page"> Personagens </TitleSpan>
         )}
       </Title>
       <HomeTopContent>
