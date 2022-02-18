@@ -7,7 +7,7 @@ export default createGlobalStyle`
   body {
     background: ${props => props.theme.colors.background};
     color: ${props => props.theme.colors.text};
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     transition: all 0.3s ease-in-out;
   }
 `;
