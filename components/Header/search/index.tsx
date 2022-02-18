@@ -6,11 +6,7 @@ import { searchList, searchTerm } from "@/store/search";
 
 const SearchBar = () => {
   const [search, setSearch] = useRecoilState(searchTerm);
-  const { state, contents } = useRecoilValueLoadable(searchList);
-
-  console.log("state", state);
-  console.log("contents", contents);
-
+  
   return (
     <SearchBarWrapper data-cy="search">
       <InputSearch
