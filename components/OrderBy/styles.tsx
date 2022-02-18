@@ -5,6 +5,11 @@ export const OrderByWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  
+  @media(max-width: 768px) {
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
 `;
 
 export const OrderByButton = styled.button`
@@ -37,6 +42,14 @@ export const OrderByTitle = styled.span`
   font-weight: normal;
   color: ${({ theme }) => theme.colors.text};
   margin-right: 12px;
+
+  @media(max-width: 768px) {
+    display: block;
+    width: 100%;
+    margin: 0px;
+    margin-bottom: 8px;
+    font-size: 16px;
+  }
 `;
 
 export const AscIcon = styled(SortAscendingIcon)`

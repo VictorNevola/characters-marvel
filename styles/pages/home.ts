@@ -2,7 +2,11 @@ import styled from "styled-components";
 import { Container } from "../utils";
 
 export const HomeWrapper = styled(Container)`
-  padding: 2.25rem 0rem;
+  padding: 2.25rem 1rem;
+
+  @media(max-width: 768px) {
+    padding: 1.25rem 1rem;
+  }
 `;
 
 export const HomeTopContent = styled.div`
@@ -10,6 +14,12 @@ export const HomeTopContent = styled.div`
   align-items: center;
   justify-content: space-between;
   margin: 14px 0 22px 0px;
+
+  @media(max-width: 768px) {
+    flex-wrap: wrap;
+    text-align: center;
+    font-size: 1.25rem;
+  }
 `;
 
 export const Title = styled.h1`
@@ -18,6 +28,11 @@ export const Title = styled.h1`
   margin: 0;
   padding: 0;
   color: ${(props) => props.theme.colors.text};
+
+  @media(max-width: 768px) {
+    text-align: center;
+    font-size: 1.25rem;
+  }
 `;
 
 export const TitleSpan = styled.span`
@@ -36,6 +51,12 @@ export const Count = styled.span`
   font-size: 1.25rem;
   font-weight: normal;
   letter-spacing: 2px;
-
   margin: 0;
+
+  @media(max-width: 768px) {
+    text-align: center;
+    font-size: 16px;
+    width: 100%;
+    margin-bottom: 12px;
+  }
 `;
