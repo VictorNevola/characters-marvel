@@ -2,14 +2,7 @@ import styled from "styled-components";
 import { SortAscendingIcon, SortDescendingIcon } from "@heroicons/react/solid";
 
 export const OrderByWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  
-  @media(max-width: 768px) {
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
+  display: block;
 `;
 
 export const OrderByButton = styled.button`
@@ -20,13 +13,13 @@ export const OrderByButton = styled.button`
   background: none;
   cursor: pointer;
   outline: none;
-
   font-size: 13px;
   line-height: 16px;
   transition: all .3s ease;
   font-weight: 600;
   color: ${({ theme }) => theme.colors.text};
   opacity: 0.5;
+  padding: 6px;
 
   &#active {
     opacity: 1;
@@ -38,10 +31,12 @@ export const OrderByButton = styled.button`
 `;
 
 export const OrderByTitle = styled.span`
+  display: block;
   font-size: 1.125rem;
   font-weight: normal;
   color: ${({ theme }) => theme.colors.text};
-  margin-right: 12px;
+  margin-bottom: 8px;
+  text-align: center;
 
   @media(max-width: 768px) {
     display: block;
@@ -50,6 +45,12 @@ export const OrderByTitle = styled.span`
     margin-bottom: 8px;
     font-size: 16px;
   }
+`;
+
+export const OrderByList = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const AscIcon = styled(SortAscendingIcon)`
