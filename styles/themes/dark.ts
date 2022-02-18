@@ -6,5 +6,6 @@ export default {
     tertiary: "#f01b28",
     background: "#292929",
     text: "#fff",
+    grayHover: "#4a4747A8",
   },
 };

@@ -9,11 +9,14 @@ export const HomeWrapper = styled(Container)`
   }
 `;
 
+
 export const HomeTopContent = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin: 14px 0 22px 0px;
+  border-bottom: 1px solid #9797977d;
+  padding-bottom: 14px;
 
   @media(max-width: 768px) {
     flex-wrap: wrap;
