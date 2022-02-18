@@ -1,4 +1,4 @@
-import { SelectQtyWrapper, SelectTtile, SelectListContainer } from "./styles";
+import { SelectQtyWrapper, SelectTtile, SelectListContainer, SelectedOrderBy } from "./styles";
 
 const SelectQty = () => {
 
@@ -11,7 +11,9 @@ const SelectQty = () => {
       </SelectTtile>
 
       <SelectListContainer>
-          10
+          <SelectedOrderBy>
+            20
+          </SelectedOrderBy>
       </SelectListContainer>
 
     </SelectQtyWrapper>

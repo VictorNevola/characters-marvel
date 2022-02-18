@@ -27,3 +27,13 @@ export const SelectListContainer = styled.div`
   padding: 6px;
   text-align: center;
 `;
+
+export const SelectedOrderBy = styled.span`
+  display: block;
+  font-size: 1.125rem;
+  font-weight: normal;
+  color: ${({ theme }) => theme.colors.text};
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 600;
+`;

@@ -13,9 +13,8 @@ export const OrderByButton = styled.button`
   background: none;
   cursor: pointer;
   outline: none;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 16px;
-  transition: all .3s ease;
   font-weight: 600;
   color: ${({ theme }) => theme.colors.text};
   opacity: 0.5;
