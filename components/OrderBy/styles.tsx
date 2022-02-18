@@ -19,7 +19,6 @@ export const OrderByButton = styled.button`
   font-weight: 600;
   color: ${({ theme }) => theme.colors.text};
   opacity: 0.5;
-  padding: 6px;
 
   &#active {
     opacity: 1;
