@@ -50,7 +50,7 @@ describe("Header", () => {
 
     cy.get("header button[data-cy='btn-change-to-dark']").should("exist");
     cy.get("header").should("have.css", 'background-color',  "rgb(255, 255, 255)");
-    cy.get("body").should("have.css", 'background-color',  "rgb(242, 242, 242)");
+    cy.get("body").should("have.css", 'background-color',  "rgb(227, 227, 227)");
     cy.get("header button[data-cy='btn-change-to-dark']").click();
 
     cy.get("header button[data-cy='btn-change-to-light']").should("exist");
