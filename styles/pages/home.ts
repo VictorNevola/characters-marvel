@@ -14,7 +14,7 @@ export const HomeTopContent = styled.div`
 
 export const Title = styled.h1`
   font-size: 1.625rem;
-  font-weight: bold;
+  font-weight: 600;
   margin: 0;
   padding: 0;
   color: ${(props) => props.theme.colors.text};
@@ -34,6 +34,8 @@ export const Count = styled.span`
   display: block;
   color: ${(props) => props.theme.colors.tertiary};
   font-size: 1.25rem;
-  font-weight: bold;
+  font-weight: normal;
+  letter-spacing: 2px;
+
   margin: 0;
 `;

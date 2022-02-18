@@ -15,12 +15,28 @@ export const OrderByButton = styled.button`
   background: none;
   cursor: pointer;
   outline: none;
+
+  font-size: 13px;
+  line-height: 16px;
+  transition: all .3s ease;
+  font-weight: 600;
+  color: ${({ theme }) => theme.colors.text};
+  opacity: 0.5;
+
+  &#active {
+    opacity: 1;
+  }
+
+  svg {
+    margin-right: 8px;
+  }
 `;
 
 export const OrderByTitle = styled.span`
   font-size: 1.125rem;
-  font-weight: bold;
+  font-weight: normal;
   color: ${({ theme }) => theme.colors.text};
+  margin-right: 12px;
 `;
 
 export const AscIcon = styled(SortAscendingIcon)`
