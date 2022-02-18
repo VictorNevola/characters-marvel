@@ -3,10 +3,6 @@ import { atom, selector } from "recoil";
 import fetch from "@/config/api";
 
 export const defaultValuesQuantity = [20, 40, 60, 80, 100];
-export interface SearchState {
-  searchTerm: string;
-  listCharacters: any[];
-};
 
 export enum orderByEnum {
   "asc" = "name",
