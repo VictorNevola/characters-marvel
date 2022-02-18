@@ -6,11 +6,13 @@ import {
   Title,
   TitleSpan,
   HomeTopContent,
+  HomeTopActions,
   Count,
 } from "@/styles/pages/home";
 
 import { searchTerm } from "@/store/search";
 import OrderBy from "@/components/OrderBy";
+import SelectQty from "@/components/SelectQty";
 
 const Home: NextPage = () => {
   const searchText = useRecoilValue(searchTerm);
@@ -27,10 +29,12 @@ const Home: NextPage = () => {
         )}
       </Title>
       <HomeTopContent>
-        <Count> 
-          123123123 encontrados
-        </Count>
-        <OrderBy />
+        <Count>12321 encontrados</Count>
+
+        <HomeTopActions>
+          <OrderBy />
+          <SelectQty />
+        </HomeTopActions>
       </HomeTopContent>
     </HomeWrapper>
   );

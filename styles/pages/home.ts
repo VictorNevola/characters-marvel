@@ -45,6 +45,18 @@ export const TitleSpan = styled.span`
   }
 `;
 
+export const HomeTopActions = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0px 24px;
+  
+  @media(max-width: 768px) {
+    width: 100%;
+    gap: 0px 14px;
+  }
+`;
+
 export const Count = styled.span`
   display: block;
   color: ${(props) => props.theme.colors.tertiary};
