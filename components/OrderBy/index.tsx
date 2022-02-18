@@ -1,5 +1,5 @@
-import { useSetRecoilState, useRecoilValue } from "recoil";
-import { orderByState, orderByEnum } from "@/store/orderBy";
+import { useSetRecoilState, useRecoilValue, useRecoilState } from "recoil";
+import { searchOptions, orderByEnum } from "@/store/search";
 import {
   OrderByWrapper,
   OrderByButton,
@@ -10,33 +10,44 @@ import {
 } from "./styles";
 
 const OrderBy = () => {
-  const setOrderBy = useSetRecoilState(orderByState);
-  const orderBySelected = useRecoilValue(orderByState);
+  const [searOptionState, setSearchOptions] = useRecoilState(searchOptions);
+  const orderBySelected = useRecoilValue(searchOptions);
 
   return (
     <OrderByWrapper>
       <OrderByTitle>Ordenar</OrderByTitle>
 
-      <OrderByList> 
-        <OrderByButton 
+      <OrderByList>
+        <OrderByButton
           title="A - Z"
-          id={orderBySelected === orderByEnum.asc ? "active" : ""}
-          onClick={() => setOrderBy(orderByEnum.asc)}
+          id={
+            orderBySelected.orderBySelected === orderByEnum.asc ? "active" : ""
+          }
+          onClick={() =>
+            setSearchOptions({
+              ...searOptionState,
+              orderBySelected: orderByEnum.asc,
+            })
+          }
         >
-          <AscIcon width={26} height={26} />
-          A - Z
+          <AscIcon width={26} height={26} />A - Z
         </OrderByButton>
 
-        <OrderByButton 
+        <OrderByButton
           title="Z - A"
-          id={orderBySelected === orderByEnum.desc ? "active" : ""}
-          onClick={() => setOrderBy(orderByEnum.desc)}
+          id={
+            orderBySelected.orderBySelected === orderByEnum.desc ? "active" : ""
+          }
+          onClick={() =>
+            setSearchOptions({
+              ...searOptionState,
+              orderBySelected: orderByEnum.desc,
+            })
+          }
         >
-          <DescIcon width={26} height={26} />
-          Z - A
+          <DescIcon width={26} height={26} />Z - A
         </OrderByButton>
       </OrderByList>
-
     </OrderByWrapper>
   );
 };
