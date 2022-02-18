@@ -8,7 +8,7 @@ export const OrderByWrapper = styled.div`
   
   @media(max-width: 768px) {
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: space-between;
   }
 `;
 
