@@ -9,6 +9,8 @@ import {
   HomeTopActions,
   Count,
   Shimmer,
+  HomeList,
+  HomeLoader,
 } from "@/styles/pages/home";
 
 import {
@@ -88,6 +90,16 @@ const Home: NextPage<HomeProps> = ({
           <SelectQty />
         </HomeTopActions>
       </HomeTopContent>
+
+      {loadingPage ? (
+        <HomeLoader>
+          <div />
+          <div />
+          <div />
+        </HomeLoader>
+      ) : (
+        <HomeList></HomeList>
+      )}
     </HomeWrapper>
   );
 };
