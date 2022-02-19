@@ -8,6 +8,7 @@ import {
   HomeTopContent,
   HomeTopActions,
   Count,
+  Shimmer,
 } from "@/styles/pages/home";
 
 import {
@@ -49,6 +50,7 @@ const Home: NextPage<HomeProps> = ({
     if (!paramsToSearchIsEqualInitial) {
       setLoadingPage(true);
       fetchNewCharacters();
+      return;
     }
 
     setCharactersList(initialCharacters.data);
@@ -73,8 +75,14 @@ const Home: NextPage<HomeProps> = ({
         )}
       </Title>
       <HomeTopContent>
-        <Count>{charactersList.total} encontrados</Count>
-
+        {loadingPage ? (
+          <Shimmer />
+        ) : (
+          <Count>
+            {charactersList.total}{" "}
+            {charactersList.total > 1 ? "encontrados" : "encontrado"}
+          </Count>
+        )}
         <HomeTopActions>
           <OrderBy />
           <SelectQty />

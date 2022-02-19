@@ -1,14 +1,23 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { Container } from "../utils";
+
+const shimmer = keyframes`
+  0% {
+    background-position: -180px 0;
+  }
+  
+  100% {
+    background-position: 180px 0; 
+  }
+`;
 
 export const HomeWrapper = styled(Container)`
   padding: 2.25rem 1rem;
 
-  @media(max-width: 768px) {
+  @media (max-width: 768px) {
     padding: 1.25rem 1rem;
   }
 `;
-
 
 export const HomeTopContent = styled.div`
   display: flex;
@@ -18,7 +27,7 @@ export const HomeTopContent = styled.div`
   border-bottom: 1px solid #9797977d;
   padding-bottom: 14px;
 
-  @media(max-width: 768px) {
+  @media (max-width: 768px) {
     flex-wrap: wrap;
     text-align: center;
     font-size: 1.25rem;
@@ -31,8 +40,9 @@ export const Title = styled.h1`
   margin: 0;
   padding: 0;
   color: ${(props) => props.theme.colors.text};
+  word-break: break-all;
 
-  @media(max-width: 768px) {
+  @media (max-width: 768px) {
     text-align: center;
     font-size: 1.25rem;
   }
@@ -44,7 +54,7 @@ export const TitleSpan = styled.span`
   strong {
     text-decoration: underline;
     text-decoration-color: ${(props) => props.theme.colors.tertiary};
-    text-underline-position: under
+    text-underline-position: under;
   }
 `;
 
@@ -53,8 +63,8 @@ export const HomeTopActions = styled.div`
   align-items: center;
   justify-content: space-between;
   gap: 0px 24px;
-  
-  @media(max-width: 768px) {
+
+  @media (max-width: 768px) {
     width: 100%;
     gap: 0px 14px;
   }
@@ -68,10 +78,23 @@ export const Count = styled.span`
   letter-spacing: 2px;
   margin: 0;
 
-  @media(max-width: 768px) {
+  @media (max-width: 768px) {
     text-align: center;
     font-size: 16px;
     width: 100%;
     margin-bottom: 12px;
   }
+`;
+
+export const Shimmer = styled.h1`
+  display: inline-block;
+  background: ${(props) => props.theme.colors.background} -webkit-gradient(linear, 100%
+        0, 0 0, from(${(props) => props.theme.colors.background}), color-stop(0.5, ${props => props.theme.colors.tertiary}), to(${(props) => props.theme.colors.background}));
+  color: white;
+  animation: ${shimmer} 3s forwards infinite;
+  background-position: -50px top;
+  background-repeat: no-repeat;
+  border-radius: 2px;
+  width: 180px;
+  height: 10px;
 `;
