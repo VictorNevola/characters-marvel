@@ -1,11 +1,28 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, useCallback } from "react";
 import { useRecoilState } from "recoil";
 import { SearchBarWrapper, IconSearch, IconX, InputSearch } from "./styles";
 
 import { searchOptions } from "@/store/search";
 
 const SearchBar = () => {
-  const [search, setSearch] = useRecoilState(searchOptions);
+  const [searchOptionsState, setSearch] = useRecoilState(searchOptions);
+
+  const updateSearch = useCallback(
+    (newValueSearch) => {
+      let optionsUpdated = {
+        ...searchOptionsState,
+      };
+
+      if (newValueSearch.length > 0) {
+        optionsUpdated.nameStartsWith = newValueSearch;
+      } else {
+        delete optionsUpdated.nameStartsWith;
+      }
+
+      setSearch(optionsUpdated);
+    },
+    [searchOptionsState, setSearch]
+  );
 
   return (
     <SearchBarWrapper data-cy="search">
@@ -13,21 +30,19 @@ const SearchBar = () => {
         minLength={2}
         debounceTimeout={800}
         placeholder="Busque pelo seu herói"
-        value={search.nameStartsWith}
+        value={searchOptionsState.nameStartsWith}
         onChange={({ target: { value } }: ChangeEvent<HTMLInputElement>) =>
-          setSearch({
-            ...search,
-            nameStartsWith: value,
-          })
+          updateSearch(value)
         }
       />
-      {search.nameStartsWith && search.nameStartsWith.length > 0 ? (
+      {searchOptionsState.nameStartsWith &&
+      searchOptionsState.nameStartsWith.length > 0 ? (
         <IconX
           role="button"
           height={22}
           width={22}
           color="#000000"
-          onClick={() => setSearch({ ...search, nameStartsWith: "" })}
+          onClick={() => updateSearch("")}
           data-cy="icon-close"
         />
       ) : (
