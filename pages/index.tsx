@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import { useRecoilValue, useRecoilValueLoadable } from "recoil";
+import { useRecoilState, useRecoilValue, useRecoilValueLoadable } from "recoil";
 
 import {
   HomeWrapper,
@@ -11,37 +11,60 @@ import {
 } from "@/styles/pages/home";
 
 import {
-  customSearchCharacters,
-  defaultValuesQuantity,
-  orderByEnum,
+  defaultValuesToSearch,
+  ParamsOptions,
   searchOptions,
 } from "@/store/search";
 import OrderBy from "@/components/OrderBy";
 import SelectQty from "@/components/SelectQty";
 import fetch from "@/config/api";
 import { ApiMarvel } from "interfaces/apiMarvel";
+import { useCallback, useEffect, useState } from "react";
 interface HomeProps {
   initialCharacters: ApiMarvel;
-  initialOptions: {
-    orderBy: orderByEnum.asc;
-    limit: number;
-  };
+  initialParamsSearch: ParamsOptions;
 }
 
-const Home: NextPage<HomeProps> = ({ initialCharacters, initialOptions }) => {
+const Home: NextPage<HomeProps> = ({
+  initialCharacters,
+  initialParamsSearch,
+}) => {
   const searchOptionState = useRecoilValue(searchOptions);
+  const [charactersList, setCharactersList] = useState(initialCharacters.data);
+  const [loadingPage, setLoadingPage] = useState(false);
 
-  console.log("initialOptions", initialOptions);
-  console.log("searchOptionsState", searchOptionState);
+  const fetchNewCharacters = useCallback(async () => {
+    const {
+      data: { data },
+    } = await fetch<ApiMarvel>("characters", "GET", searchOptionState);
 
-  // const customSearchCharacted = useRecoilValueLoadable(customSearchCharacters);
+    setCharactersList(data);
+    setLoadingPage(false);
+  }, [searchOptionState]);
 
-  // console.log("customSearchCharacted", customSearchCharacted);
+  useEffect(() => {
+    const paramsToSearchIsEqualInitial =
+      JSON.stringify(initialParamsSearch) === JSON.stringify(searchOptionState);
+
+    if (!paramsToSearchIsEqualInitial) {
+      setLoadingPage(true);
+      fetchNewCharacters();
+    }
+
+    setCharactersList(initialCharacters.data);
+    setLoadingPage(false);
+  }, [
+    fetchNewCharacters,
+    initialCharacters.data,
+    initialParamsSearch,
+    searchOptionState,
+  ]);
 
   return (
     <HomeWrapper>
       <Title>
-        {searchOptionState.nameStartsWith && searchOptionState.nameStartsWith.length > 0 ? (
+        {searchOptionState.nameStartsWith &&
+        searchOptionState.nameStartsWith.length > 0 ? (
           <TitleSpan data-cy="title-page">
             Buscando por <strong> {searchOptionState.nameStartsWith}</strong>
           </TitleSpan>
@@ -50,7 +73,7 @@ const Home: NextPage<HomeProps> = ({ initialCharacters, initialOptions }) => {
         )}
       </Title>
       <HomeTopContent>
-        <Count>{initialCharacters.data.total} encontrados</Count>
+        <Count>{charactersList.total} encontrados</Count>
 
         <HomeTopActions>
           <OrderBy />
@@ -62,17 +85,16 @@ const Home: NextPage<HomeProps> = ({ initialCharacters, initialOptions }) => {
 };
 
 export async function getServerSideProps() {
-  const initialParams = {
-    orderBy: orderByEnum.asc,
-    limit: defaultValuesQuantity[0],
-  };
-
-  const res = await fetch<ApiMarvel>(`/characters`, "GET", initialParams);
+  const res = await fetch<ApiMarvel>(
+    `/characters`,
+    "GET",
+    defaultValuesToSearch
+  );
 
   return {
     props: {
       initialCharacters: res.data,
-      initialOptions: initialParams,
+      initialParamsSearch: defaultValuesToSearch,
     },
   };
 }
