@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useRecoilValueLoadable } from "recoil";
 
 import {
   HomeWrapper,
@@ -10,32 +10,47 @@ import {
   Count,
 } from "@/styles/pages/home";
 
-import { defaultValuesQuantity, searchTerm } from "@/store/search";
+import {
+  customSearchCharacters,
+  defaultValuesQuantity,
+  orderByEnum,
+  searchOptions,
+} from "@/store/search";
 import OrderBy from "@/components/OrderBy";
 import SelectQty from "@/components/SelectQty";
 import fetch from "@/config/api";
 import { ApiMarvel } from "interfaces/apiMarvel";
-
 interface HomeProps {
   initialCharacters: ApiMarvel;
+  initialOptions: {
+    orderBy: orderByEnum.asc;
+    limit: number;
+  };
 }
 
-const Home: NextPage<HomeProps> = ({ initialCharacters }) => {
-  const searchText = useRecoilValue(searchTerm);
-  
+const Home: NextPage<HomeProps> = ({ initialCharacters, initialOptions }) => {
+  const searchOptionState = useRecoilValue(searchOptions);
+
+  console.log("initialOptions", initialOptions);
+  console.log("searchOptionsState", searchOptionState);
+
+  // const customSearchCharacted = useRecoilValueLoadable(customSearchCharacters);
+
+  // console.log("customSearchCharacted", customSearchCharacted);
+
   return (
     <HomeWrapper>
       <Title>
-        {searchText.length > 0 ? (
+        {searchOptionState.nameStartsWith && searchOptionState.nameStartsWith.length > 0 ? (
           <TitleSpan data-cy="title-page">
-            Buscando por <strong> {searchText}</strong>
+            Buscando por <strong> {searchOptionState.nameStartsWith}</strong>
           </TitleSpan>
         ) : (
           <TitleSpan data-cy="title-page"> Personagens </TitleSpan>
         )}
       </Title>
       <HomeTopContent>
-        <Count>{ initialCharacters.data.total } encontrados</Count>
+        <Count>{initialCharacters.data.total} encontrados</Count>
 
         <HomeTopActions>
           <OrderBy />
@@ -47,9 +62,19 @@ const Home: NextPage<HomeProps> = ({ initialCharacters }) => {
 };
 
 export async function getServerSideProps() {
-  const res = await fetch<ApiMarvel>(`/characters`, "GET");
+  const initialParams = {
+    orderBy: orderByEnum.asc,
+    limit: defaultValuesQuantity[0],
+  };
 
-  return { props: { initialCharacters: res.data } };
+  const res = await fetch<ApiMarvel>(`/characters`, "GET", initialParams);
+
+  return {
+    props: {
+      initialCharacters: res.data,
+      initialOptions: initialParams,
+    },
+  };
 }
 
 export default Home;

@@ -1,4 +1,4 @@
-import { useSetRecoilState, useRecoilValue, useRecoilState } from "recoil";
+import { useRecoilValue, useRecoilState } from "recoil";
 import { searchOptions, orderByEnum } from "@/store/search";
 import {
   OrderByWrapper,
@@ -20,13 +20,11 @@ const OrderBy = () => {
       <OrderByList>
         <OrderByButton
           title="A - Z"
-          id={
-            orderBySelected.orderBySelected === orderByEnum.asc ? "active" : ""
-          }
+          id={orderBySelected.orderBy === orderByEnum.asc ? "active" : ""}
           onClick={() =>
             setSearchOptions({
               ...searOptionState,
-              orderBySelected: orderByEnum.asc,
+              orderBy: orderByEnum.asc,
             })
           }
         >
@@ -35,13 +33,11 @@ const OrderBy = () => {
 
         <OrderByButton
           title="Z - A"
-          id={
-            orderBySelected.orderBySelected === orderByEnum.desc ? "active" : ""
-          }
+          id={orderBySelected.orderBy === orderByEnum.desc ? "active" : ""}
           onClick={() =>
             setSearchOptions({
               ...searOptionState,
-              orderBySelected: orderByEnum.desc,
+              orderBy: orderByEnum.desc,
             })
           }
         >

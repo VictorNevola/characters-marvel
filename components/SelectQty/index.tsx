@@ -22,20 +22,18 @@ const SelectQty = () => {
 
       <SelectListContainer>
         <SelectedQuantity>
-          {
-            searOptionValues.qtySelected
-          }
+          {searOptionValues.limit}
           <ChevronDownIcon id="chevron-down" width={16} height={16} />
         </SelectedQuantity>
         <SelectList id="select-list">
           {defaultValuesQuantity.map((value) => (
             <SelectListOption
               key={(window as any).crypto.randomUUID()}
-              id={value === searOptionValues.qtySelected ? "selected" : ""}
+              id={value === searOptionValues.limit ? "selected" : ""}
               onClick={() =>
                 setSearchOptions({
                   ...searOptionState,
-                  qtySelected: value,
+                  limit: value,
                 })
               }
             >

@@ -1,34 +1,43 @@
 import { ChangeEvent } from "react";
-import { useRecoilState, useRecoilValueLoadable } from "recoil";
+import { useRecoilState } from "recoil";
 import { SearchBarWrapper, IconSearch, IconX, InputSearch } from "./styles";
 
-import { searchList, searchTerm } from "@/store/search";
+import { searchOptions } from "@/store/search";
 
 const SearchBar = () => {
-  const [search, setSearch] = useRecoilState(searchTerm);
-  
+  const [search, setSearch] = useRecoilState(searchOptions);
+
   return (
     <SearchBarWrapper data-cy="search">
       <InputSearch
         minLength={2}
         debounceTimeout={800}
         placeholder="Busque pelo seu herói"
-        value={search}
+        value={search.nameStartsWith}
         onChange={({ target: { value } }: ChangeEvent<HTMLInputElement>) =>
-          setSearch(value)
+          setSearch({
+            ...search,
+            nameStartsWith: value,
+          })
         }
       />
-      {search.length > 0 ? (
+      {search.nameStartsWith && search.nameStartsWith.length > 0 ? (
         <IconX
           role="button"
           height={22}
           width={22}
           color="#000000"
-          onClick={() => setSearch("")}
+          onClick={() => setSearch({ ...search, nameStartsWith: "" })}
           data-cy="icon-close"
         />
       ) : (
-        <IconSearch role="button" height={22} width={22} color="#000000" data-cy="icon-search"/>
+        <IconSearch
+          role="button"
+          height={22}
+          width={22}
+          color="#000000"
+          data-cy="icon-search"
+        />
       )}
     </SearchBarWrapper>
   );
