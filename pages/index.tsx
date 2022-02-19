@@ -10,13 +10,19 @@ import {
   Count,
 } from "@/styles/pages/home";
 
-import { searchTerm } from "@/store/search";
+import { defaultValuesQuantity, searchTerm } from "@/store/search";
 import OrderBy from "@/components/OrderBy";
 import SelectQty from "@/components/SelectQty";
+import fetch from "@/config/api";
+import { ApiMarvel } from "interfaces/apiMarvel";
 
-const Home: NextPage = () => {
+interface HomeProps {
+  initialCharacters: ApiMarvel;
+}
+
+const Home: NextPage<HomeProps> = ({ initialCharacters }) => {
   const searchText = useRecoilValue(searchTerm);
-
+  
   return (
     <HomeWrapper>
       <Title>
@@ -29,7 +35,7 @@ const Home: NextPage = () => {
         )}
       </Title>
       <HomeTopContent>
-        <Count>12321 encontrados</Count>
+        <Count>{ initialCharacters.data.total } encontrados</Count>
 
         <HomeTopActions>
           <OrderBy />
@@ -39,5 +45,11 @@ const Home: NextPage = () => {
     </HomeWrapper>
   );
 };
+
+export async function getServerSideProps() {
+  const res = await fetch<ApiMarvel>(`/characters`, "GET");
+
+  return { props: { initialCharacters: res.data } };
+}
 
 export default Home;
