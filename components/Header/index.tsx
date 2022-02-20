@@ -4,7 +4,7 @@ import { HeaderWrapper, HeaderNav, HeadertActions } from "./styles";
 import Logo from "./logo";
 import ToggleTheme from "./toggleTheme";
 import SearchBar from "./search";
-import Profile from "./profile";
+import Favorites from "./favorites";
 
 const Header = () => {
   return (
@@ -15,7 +15,7 @@ const Header = () => {
           <SearchBar />
           <HeadertActions>
             <ToggleTheme />
-            <Profile />
+            <Favorites />
           </HeadertActions>
         </HeaderNav>
       </Container>
