@@ -8,7 +8,7 @@ const Favorites = () => {
   const favoritesState = useRecoilValue(favorites);
 
   return (
-    <Link href="/favorites" passHref>
+    <Link href="/favoritos" passHref>
       <ProfileWrapper>
         <ProfileIcon> 
           <ProfileCount>

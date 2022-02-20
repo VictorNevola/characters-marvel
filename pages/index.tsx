@@ -1,3 +1,4 @@
+import { useCallback, useEffect, useState } from "react";
 import type { NextPage } from "next";
 import { useRecoilValue } from "recoil";
 
@@ -11,21 +12,22 @@ import {
   Shimmer,
   HomeList,
   HomeListContent,
-  HomeLoader,
 } from "@/styles/pages/home";
+import { SpinnerLoader } from "@/styles/utils";
 
+import fetch from "@/config/api";
 import {
   defaultValuesToSearch,
   ParamsOptions,
   searchOptions,
 } from "@/store/search";
+
 import OrderBy from "@/components/OrderBy";
 import SelectQty from "@/components/SelectQty";
-import fetch from "@/config/api";
-import { ApiMarvel } from "interfaces/apiMarvel";
-import { useCallback, useEffect, useState } from "react";
 import Card from "@/components/Card";
 import Pagination from "@/components/Pagination";
+
+import { ApiMarvel } from "interfaces/apiMarvel";
 interface HomeProps {
   initialCharacters: ApiMarvel;
   initialParamsSearch: ParamsOptions;
@@ -95,11 +97,11 @@ const Home: NextPage<HomeProps> = ({
       </HomeTopContent>
 
       {loadingPage ? (
-        <HomeLoader>
+        <SpinnerLoader>
           <div />
           <div />
           <div />
-        </HomeLoader>
+        </SpinnerLoader>
       ) : (
         <>
           {charactersList.total === 0 &&

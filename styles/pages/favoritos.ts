@@ -30,3 +30,25 @@ export const FavoritesCount = styled.span`
     margin-bottom: 12px;
   }
 `;
+
+export const FavoritesEmptyPage = styled.div`
+  text-align: center;
+
+  p {
+    font-size: 1.25rem;
+    font-weight: normal;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+  }
+`;
+
+export const FavoritesLink = styled.a`
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  color: ${({ theme }) => theme.colors.tertiary};
+  font-size: 1.25rem;
+  font-weight: normal;
+  letter-spacing: 2px;
+  margin: 0;
+`;
