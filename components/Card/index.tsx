@@ -1,8 +1,5 @@
 import Image from "next/image";
 import dayjs from "dayjs";
-import { HeartIcon as HeartIconSolid } from "@heroicons/react/solid";
-import { HeartIcon as HeartIconOutline } from "@heroicons/react/outline";
-
 import { Character } from "@/interfaces/character";
 
 import {
@@ -11,10 +8,10 @@ import {
   CardAbout,
   CardName,
   CardInfo,
-  CardBtnWishList,
 } from "./styles";
 
 import CardDropDown from "./dropDown";
+import BtnWishlist from "./BtnWishlist";
 
 const Card = ({
   name,
@@ -35,9 +32,7 @@ const Card = ({
           width={400}
           height={360}
         />
-        <CardBtnWishList>
-          <HeartIconOutline />
-        </CardBtnWishList>
+        <BtnWishlist id={id} />
       </CardImage>
       <CardAbout>
         <CardName>{name}</CardName>
@@ -55,9 +50,9 @@ const Card = ({
         <CardInfo>
           <strong>Descrição:</strong>
           <p>
-            {
-              description.length > 0 ? description : "Não há descrição disponível"
-            }
+            {description.length > 0
+              ? description
+              : "Não há descrição disponível"}
           </p>
         </CardInfo>
       </CardAbout>
