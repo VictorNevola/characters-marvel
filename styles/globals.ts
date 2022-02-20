@@ -9,5 +9,6 @@ export default createGlobalStyle`
     color: ${props => props.theme.colors.text};
     font-family: 'Montserrat', sans-serif;
     transition: all 0.3s ease-in-out;
+    scroll-behavior: smooth;
   }
 `;

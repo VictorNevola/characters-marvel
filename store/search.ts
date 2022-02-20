@@ -8,6 +8,7 @@ export interface ParamsOptions {
   orderBy: string;
   limit: number;
   nameStartsWith?: string;
+  offset?: number;
 }
 
 export enum orderByEnum {
@@ -18,6 +19,7 @@ export enum orderByEnum {
 export const defaultValuesToSearch = {
   orderBy: orderByEnum.asc,
   limit: defaultValuesQuantity[0],
+  offset: 0,
 }
 
 export const searchOptions = atom<ParamsOptions>({

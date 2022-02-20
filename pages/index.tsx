@@ -25,6 +25,7 @@ import fetch from "@/config/api";
 import { ApiMarvel } from "interfaces/apiMarvel";
 import { useCallback, useEffect, useState } from "react";
 import Card from "@/components/Card";
+import Pagination from "@/components/Pagination";
 interface HomeProps {
   initialCharacters: ApiMarvel;
   initialParamsSearch: ParamsOptions;
@@ -115,6 +116,10 @@ const Home: NextPage<HomeProps> = ({
           )}
         </>
       )}
+
+      <Pagination
+        totalPages={Math.round(charactersList.total / searchOptionState.limit)}
+      />
     </HomeWrapper>
   );
 };
