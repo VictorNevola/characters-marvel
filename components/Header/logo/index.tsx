@@ -13,6 +13,7 @@ const Logo = () => {
           width={98}
           height={38}
           data-cy="logo"
+          priority={true}
         />
       </LogoLink>
     </Link>
