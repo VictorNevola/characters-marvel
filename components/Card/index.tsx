@@ -10,7 +10,7 @@ import {
   CardInfo,
 } from "./styles";
 
-import CardDropDown from "./dropDown";
+import CardDropDown from "./DropDown";
 import BtnWishlist from "./BtnWishlist";
 
 const Card = ({
