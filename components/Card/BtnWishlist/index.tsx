@@ -4,11 +4,9 @@ import { HeartIcon as HeartIconOutline } from "@heroicons/react/outline";
 import { CardBtnWishList } from "./styles";
 import { useRecoilState } from "recoil";
 import { favoritesHandler } from "@/store/favorites";
-interface CardBtnWishListProps {
-  id: number;
-}
+import { Character } from "@/interfaces/character";
 
-const BtnWishlist = ({ id }: CardBtnWishListProps) => {
+const BtnWishlist = ({ id }: Character) => {
   const [isWishlisted, setWishlist] = useRecoilState(favoritesHandler(id));
 
   return (

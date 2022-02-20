@@ -13,16 +13,18 @@ import {
 import CardDropDown from "./DropDown";
 import BtnWishlist from "./BtnWishlist";
 
-const Card = ({
-  name,
-  thumbnail,
-  modified,
-  description,
-  comics,
-  series,
-  stories,
-  id,
-}: Character) => {
+const Card = (character: Character) => {
+  const {
+    name,
+    thumbnail,
+    modified,
+    description,
+    comics,
+    series,
+    stories,
+    id,
+  } = character;
+
   return (
     <CardWrapper data-cardid={id}>
       <CardImage>
@@ -32,7 +34,7 @@ const Card = ({
           width={400}
           height={360}
         />
-        <BtnWishlist id={id} />
+        <BtnWishlist {...character} />
       </CardImage>
       <CardAbout>
         <CardName>{name}</CardName>
