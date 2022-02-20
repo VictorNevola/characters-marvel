@@ -114,9 +114,15 @@ export const HomeList = styled.ul`
   padding: 0;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  grid-gap: 1rem;
+  grid-row-gap: 14px;
+  grid-column-gap: 18px;
   justify-items: center;
   align-items: center;
+  width: 100%;
+`;
+
+export const HomeListContent = styled.li`
+  display: block;
   width: 100%;
 `;
 
@@ -134,10 +140,11 @@ export const HomeLoader = styled.div`
     width: 64px;
     height: 64px;
     margin: 8px;
-    border: 8px solid ${pros => pros.theme.colors.text};
+    border: 8px solid ${(pros) => pros.theme.colors.text};
     border-radius: 50%;
     animation: ${ldsRing} 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    border-color: ${pros => pros.theme.colors.text} transparent transparent transparent;
+    border-color: ${(pros) => pros.theme.colors.text} transparent transparent
+      transparent;
     margin: 0 auto;
 
     &:nth-child(1) {

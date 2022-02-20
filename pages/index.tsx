@@ -10,6 +10,7 @@ import {
   Count,
   Shimmer,
   HomeList,
+  HomeListContent,
   HomeLoader,
 } from "@/styles/pages/home";
 
@@ -106,7 +107,9 @@ const Home: NextPage<HomeProps> = ({
           ) : (
             <HomeList>
               {charactersList.results.map((character) => (
-                <Card key={character.id} {...character} />
+                <HomeListContent key={character.id}>
+                  <Card {...character} />
+                </HomeListContent>
               ))}
             </HomeList>
           )}

@@ -1,9 +1,17 @@
 import styled from "styled-components";
 
-const Card = styled.article`
-  padding: 12px;
+export const CardWrapper = styled.article`
   border-radius: 4px;
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
-  background-color: ${props => props.theme.colors.primary};;
+  width: 100%;
+  box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+  background-color: ${(props) => props.theme.colors.primary};
+`;
 
+export const CardImage = styled.div`
+  width: 100%;
+
+  img {
+    margin: 0 auto;
+    width: 100%;
+  }
 `;

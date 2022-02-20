@@ -1,15 +1,22 @@
+import Image from "next/image";
+
 import { Character } from "interfaces/character";
 
-const Card = ( { name }: Character) => {
+import { CardWrapper, CardImage } from "./styles";
+
+const Card = ( { name, thumbnail }: Character) => {
 
   return(
-    <div className="card"> 
-      <div className="card-image"> 
-        {
-          name
-        }
-      </div>
-    </div>
+    <CardWrapper> 
+      <CardImage>
+        <Image
+          src={`${thumbnail.path}.${thumbnail.extension}`}
+          alt={name}
+          width={348}
+          height={246}
+        />
+      </CardImage>
+    </CardWrapper>
   )
 
 };
