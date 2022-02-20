@@ -1,6 +1,7 @@
 import Image from "next/image";
 import dayjs from "dayjs";
-import { useCallback } from "react";
+import { HeartIcon as HeartIconSolid } from "@heroicons/react/solid";
+import { HeartIcon as HeartIconOutline } from "@heroicons/react/outline";
 
 import { Character } from "@/interfaces/character";
 
@@ -10,6 +11,7 @@ import {
   CardAbout,
   CardName,
   CardInfo,
+  CardBtnWishList,
 } from "./styles";
 
 import CardDropDown from "./dropDown";
@@ -33,6 +35,9 @@ const Card = ({
           width={400}
           height={360}
         />
+        <CardBtnWishList>
+          <HeartIconOutline />
+        </CardBtnWishList>
       </CardImage>
       <CardAbout>
         <CardName>{name}</CardName>
