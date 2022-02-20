@@ -118,7 +118,9 @@ const Home: NextPage<HomeProps> = ({
       )}
 
       <Pagination
-        totalPages={Math.round(charactersList.total / searchOptionState.limit)}
+        totalPages={
+          Math.round(charactersList.total / searchOptionState.limit) || 1
+        }
       />
     </HomeWrapper>
   );

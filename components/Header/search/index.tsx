@@ -11,6 +11,7 @@ const SearchBar = () => {
     (newValueSearch) => {
       let optionsUpdated = {
         ...searchOptionsState,
+        offset: 0,
       };
 
       if (newValueSearch.length > 0) {

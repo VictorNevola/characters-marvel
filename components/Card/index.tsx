@@ -30,10 +30,8 @@ const Card = ({
         <Image
           src={`${thumbnail.path}.${thumbnail.extension}`}
           alt={name}
-          layout="responsive"
           width={400}
           height={360}
-          quality={90}
         />
       </CardImage>
       <CardAbout>
