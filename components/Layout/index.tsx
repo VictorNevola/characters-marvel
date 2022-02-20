@@ -7,6 +7,7 @@ import light from "@/styles/themes/light";
 import dark from "@/styles/themes/dark";
 
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const Layout: FC = ({ children }) => {
   const { systemTheme, theme } = useTheme();
@@ -24,6 +25,7 @@ const Layout: FC = ({ children }) => {
       <GlobalStyles />
       <Header />
       {children}
+      <Footer />
     </ThemeProvider>
   );
 };
