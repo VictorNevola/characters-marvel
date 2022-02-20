@@ -1,4 +1,4 @@
-import { atom, AtomEffect, selectorFamily } from "recoil";
+import { atom, selectorFamily } from "recoil";
 
 const localStorageEffect =
   (key: string) =>
@@ -15,31 +15,31 @@ const localStorageEffect =
     });
   };
 
-export const wishlist = atom({
-  key: "wishlist",
+export const favorites = atom({
+  key: "favorites",
   default: [] as number[],
-  effects: [localStorageEffect("wishlist")],
+  effects: [localStorageEffect("favorites")],
 });
 
-export const wishlistHandler = selectorFamily({
-  key: "wishlistHandler",
+export const favoritesHandler = selectorFamily({
+  key: "favoritesHandler",
   get:
     (id: number) =>
     ({ get }) =>
-      get(wishlist).includes(id),
+      get(favorites).includes(id),
   set:
     (id: number) =>
     ({ get, set }) => {
-      const wishlistValues = get(wishlist);
-      const hasIdInWishList = wishlistValues.includes(id);
+      const favoritesValues = get(favorites);
+      const hasIdInfavorites = favoritesValues.includes(id);
 
-      if (hasIdInWishList) {
-        const newWishlistValues = wishlistValues.filter(
+      if (hasIdInfavorites) {
+        const newfavoritesValues = favoritesValues.filter(
           (value: number) => value !== id
         );
-        return set(wishlist, newWishlistValues);
+        return set(favorites, newfavoritesValues);
       }
 
-      return set(wishlist, [...wishlistValues, id]);
+      return set(favorites, [...favoritesValues, id]);
     },
 });
