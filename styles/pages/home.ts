@@ -124,6 +124,7 @@ export const HomeList = styled.ul`
 export const HomeListContent = styled.li`
   display: block;
   width: 100%;
+  height: 100%;
 `;
 
 export const HomeLoader = styled.div`
