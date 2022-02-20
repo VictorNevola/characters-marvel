@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import { useRecoilState, useRecoilValue, useRecoilValueLoadable } from "recoil";
+import { useRecoilValue } from "recoil";
 
 import {
   HomeWrapper,
@@ -23,6 +23,7 @@ import SelectQty from "@/components/SelectQty";
 import fetch from "@/config/api";
 import { ApiMarvel } from "interfaces/apiMarvel";
 import { useCallback, useEffect, useState } from "react";
+import Card from "@/components/Card";
 interface HomeProps {
   initialCharacters: ApiMarvel;
   initialParamsSearch: ParamsOptions;
@@ -98,7 +99,18 @@ const Home: NextPage<HomeProps> = ({
           <div />
         </HomeLoader>
       ) : (
-        <HomeList></HomeList>
+        <>
+          {charactersList.total === 0 &&
+          searchOptionState.nameStartsWith !== "" ? (
+            <h2>Nenhum personagem encontrado</h2>
+          ) : (
+            <HomeList>
+              {charactersList.results.map((character) => (
+                <Card key={character.id} {...character} />
+              ))}
+            </HomeList>
+          )}
+        </>
       )}
     </HomeWrapper>
   );
