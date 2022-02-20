@@ -52,3 +52,22 @@ export const FavoritesLink = styled.a`
   letter-spacing: 2px;
   margin: 0;
 `;
+
+export const FavoritesList = styled.ul`
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-row-gap: 14px;
+  grid-column-gap: 18px;
+  justify-items: center;
+  align-items: center;
+  width: 100%;
+`;
+
+export const FavoritesListContent = styled.li`
+  display: block;
+  width: 100%;
+  height: 100%;
+`;

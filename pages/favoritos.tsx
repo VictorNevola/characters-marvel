@@ -8,14 +8,17 @@ import {
   FavoritesCount,
   FavoritesEmptyPage,
   FavoritesLink,
+  FavoritesList,
+  FavoritesListContent,
 } from "@/styles/pages/favoritos";
 
 import fetch from "@/config/api";
 import { favorites } from "@/store/favorites";
-import { Container } from "@/styles/utils";
+import { Container, SpinnerLoader } from "@/styles/utils";
 
 import { Character } from "@/interfaces/character";
 import { ApiMarvel } from "@/interfaces/apiMarvel";
+import Card from "@/components/Card";
 
 const Favorites = () => {
   const favoritesState = useRecoilValue(favorites);
@@ -54,6 +57,15 @@ const Favorites = () => {
           {favoritesState.length}{" "}
           {favoritesState.length === 1 ? "encontrado" : "encontrados"}{" "}
         </FavoritesCount>
+
+        {loadingCharacters ? (
+          <SpinnerLoader>
+            <div />
+            <div />
+            <div />
+          </SpinnerLoader>
+        ) : null}
+
         {!loadingCharacters && listCharacters.length === 0 ? (
           <FavoritesEmptyPage>
             <p>Você não possui nenhum favorito.</p>
@@ -62,7 +74,15 @@ const Favorites = () => {
             </Link>
           </FavoritesEmptyPage>
         ) : (
-          <></>
+          <FavoritesList>
+            {listCharacters.map((character) => {
+              return (
+                <FavoritesListContent key={character.id}>
+                  <Card {...character} />
+                </FavoritesListContent>
+              );
+            })}
+          </FavoritesList>
         )}
       </Container>
     </FavoritesWrapper>
