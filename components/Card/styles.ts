@@ -9,9 +9,4 @@ export const CardWrapper = styled.article`
 
 export const CardImage = styled.div`
   width: 100%;
-
-  img {
-    margin: 0 auto;
-    width: 100%;
-  }
 `;

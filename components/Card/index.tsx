@@ -12,8 +12,10 @@ const Card = ( { name, thumbnail }: Character) => {
         <Image
           src={`${thumbnail.path}.${thumbnail.extension}`}
           alt={name}
-          width={348}
-          height={246}
+          layout="responsive"
+          width={2400}
+          height={1598}
+          quality={90}
         />
       </CardImage>
     </CardWrapper>
