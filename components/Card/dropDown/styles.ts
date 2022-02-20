@@ -49,6 +49,12 @@ export const CardDropDownBtn = styled.button`
   display: flex;
   font-size: 14px;
   line-height: 18px;
+  color: ${(props) => props.theme.colors.text};
+  border: none;
+  background-color: ${(props) => props.theme.colors.background};
+  padding: 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
 `;
 
 export const CardDropDownList = styled.ul`

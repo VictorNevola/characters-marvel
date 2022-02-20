@@ -48,6 +48,15 @@ const Card = ({
         <CardDropDown title="Séries" listContent={series} id={id} />
 
         <CardDropDown title="Histórias" listContent={stories} id={id} />
+
+        <CardInfo>
+          <strong>Descrição:</strong>
+          <p>
+            {
+              description.length > 0 ? description : "Não há descrição disponível"
+            }
+          </p>
+        </CardInfo>
       </CardAbout>
     </CardWrapper>
   );

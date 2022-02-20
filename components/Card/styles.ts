@@ -32,7 +32,9 @@ export const CardName = styled.h1`
 export const CardInfo = styled.div`
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   position: relative;
+  gap: 0.5rem 0px;
   font-size: 14px;
   line-height: 21px;
   color: ${(props) => props.theme.colors.text};
