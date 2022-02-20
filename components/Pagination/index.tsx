@@ -39,6 +39,7 @@ const Pagination = ({ totalPages }: PaginationProps) => {
         onPageChange={({ selected }) => chagePage(selected)}
         pageRangeDisplayed={2}
         marginPagesDisplayed={2}
+        initialPage={0}
         nextLabel={
           <svg
             width="7"

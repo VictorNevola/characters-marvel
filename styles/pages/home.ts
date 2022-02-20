@@ -22,6 +22,7 @@ export const ldsRing = keyframes`
 
 export const HomeWrapper = styled(Container)`
   padding: 2.25rem 1rem;
+  min-height: 100vh;
 
   @media (max-width: 768px) {
     padding: 1.25rem 1rem;
