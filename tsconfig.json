@@ -24,6 +24,7 @@
       "@/public/*": ["public/*"],
       "@/store/*": ["store/*"],
       "@/config/*": ["config/*"],
+      "@/interfaces/*": ["interfaces/*"],
     }
   },
   "include": ["next-env.d.ts", "src/styles/styled.d.ts", "**/*.ts", "**/*.tsx"],

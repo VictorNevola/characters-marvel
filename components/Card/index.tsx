@@ -1,7 +1,8 @@
 import Image from "next/image";
 import dayjs from "dayjs";
+import { useCallback } from "react";
 
-import { Character } from "interfaces/character";
+import { Character } from "@/interfaces/character";
 
 import {
   CardWrapper,
@@ -9,10 +10,9 @@ import {
   CardAbout,
   CardName,
   CardInfo,
-  CardInfoList,
-  CardInfoBtn,
 } from "./styles";
-import { useCallback } from "react";
+
+import CardDropDown from "./dropDown";
 
 const Card = ({
   name,
@@ -20,24 +20,12 @@ const Card = ({
   modified,
   description,
   comics,
+  series,
+  stories,
   id,
 }: Character) => {
-  const toggleList = useCallback(
-    (typeList) => {
-      const elementContainer = document.querySelector(
-        `article[data-cardid="${id}"]`
-      );
-      const elementList = elementContainer?.querySelector(
-        `div[data-infolist="${typeList}"]`
-      );
-
-      elementList?.classList.toggle("active");
-    },
-    [id]
-  );
-
   return (
-    <CardWrapper data-cardId={id}>
+    <CardWrapper data-cardid={id}>
       <CardImage>
         <Image
           src={`${thumbnail.path}.${thumbnail.extension}`}
@@ -55,28 +43,11 @@ const Card = ({
           {dayjs(modified).format("DD/MM/YYYY")}
         </CardInfo>
 
-        <CardInfoList data-infoList="comics">
-          <section>
-            <div>
-              <strong>Quadrinhos:</strong>
-              {comics.items.length}
-            </div>
-            {comics.available ? (
-              <CardInfoBtn onClick={() => toggleList("comics")}>
-                {" "}
-                Ver mais
-              </CardInfoBtn>
-            ) : null}
-          </section>
+        <CardDropDown title="Quadrinhos" listContent={comics} id={id} />
 
-          {comics.available ? (
-            <ul>
-              {comics.items.map((comic) => (
-                <li key={comic.resourceURI}>{comic.name}</li>
-              ))}
-            </ul>
-          ) : null}
-        </CardInfoList>
+        <CardDropDown title="Séries" listContent={series} id={id} />
+
+        <CardDropDown title="Histórias" listContent={stories} id={id} />
       </CardAbout>
     </CardWrapper>
   );
