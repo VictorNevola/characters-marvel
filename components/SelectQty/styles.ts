@@ -46,6 +46,22 @@ export const SelectListContainer = styled.div`
       }
     }
   }
+
+  &.active {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-color: transparent;
+
+    #select-list {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    #chevron-down {
+      transform: rotate(180deg);
+    }
+  }
 `;
 
 export const SelectedQuantity = styled.span`
