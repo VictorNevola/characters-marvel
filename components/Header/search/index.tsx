@@ -31,7 +31,11 @@ const SearchBar = () => {
         minLength={2}
         debounceTimeout={800}
         placeholder="Busque pelo seu herói"
-        value={searchOptionsState.nameStartsWith}
+        value={
+          searchOptionsState.nameStartsWith !== undefined
+            ? searchOptionsState.nameStartsWith
+            : ""
+        }
         onChange={({ target: { value } }: ChangeEvent<HTMLInputElement>) =>
           updateSearch(value)
         }
