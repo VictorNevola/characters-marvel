@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import type { NextPage } from "next";
+import Head from "next/head";
 import { useRecoilValue } from "recoil";
 
 import {
@@ -70,61 +71,66 @@ const Home: NextPage<HomeProps> = ({
   ]);
 
   return (
-    <HomeWrapper>
-      <Title>
-        {searchOptionState.nameStartsWith &&
-        searchOptionState.nameStartsWith.length > 0 ? (
-          <TitleSpan data-cy="title-page">
-            Buscando por <strong> {searchOptionState.nameStartsWith}</strong>
-          </TitleSpan>
-        ) : (
-          <TitleSpan data-cy="title-page"> Personagens </TitleSpan>
-        )}
-      </Title>
-      <HomeTopContent>
-        {loadingPage ? (
-          <Shimmer />
-        ) : (
-          <Count>
-            {charactersList.total}{" "}
-            {charactersList.total > 1 ? "encontrados" : "encontrado"}
-          </Count>
-        )}
-        <HomeTopActions>
-          <OrderBy />
-          <SelectQty />
-        </HomeTopActions>
-      </HomeTopContent>
-
-      {loadingPage ? (
-        <SpinnerLoader>
-          <div />
-          <div />
-          <div />
-        </SpinnerLoader>
-      ) : (
-        <>
-          {charactersList.total === 0 &&
-          searchOptionState.nameStartsWith !== "" ? (
-            <h2>Nenhum personagem encontrado</h2>
+    <>
+      <Head>
+        <title> Personagens Marvel </title>
+      </Head>
+      <HomeWrapper>
+        <Title>
+          {searchOptionState.nameStartsWith &&
+          searchOptionState.nameStartsWith.length > 0 ? (
+            <TitleSpan data-cy="title-page">
+              Buscando por <strong> {searchOptionState.nameStartsWith}</strong>
+            </TitleSpan>
           ) : (
-            <HomeList>
-              {charactersList.results.map((character) => (
-                <HomeListContent key={character.id}>
-                  <Card {...character} />
-                </HomeListContent>
-              ))}
-            </HomeList>
+            <TitleSpan data-cy="title-page"> Personagens </TitleSpan>
           )}
-        </>
-      )}
+        </Title>
+        <HomeTopContent>
+          {loadingPage ? (
+            <Shimmer />
+          ) : (
+            <Count>
+              {charactersList.total}{" "}
+              {charactersList.total > 1 ? "encontrados" : "encontrado"}
+            </Count>
+          )}
+          <HomeTopActions>
+            <OrderBy />
+            <SelectQty />
+          </HomeTopActions>
+        </HomeTopContent>
 
-      <Pagination
-        totalPages={
-          Math.round(charactersList.total / searchOptionState.limit) || 1
-        }
-      />
-    </HomeWrapper>
+        {loadingPage ? (
+          <SpinnerLoader>
+            <div />
+            <div />
+            <div />
+          </SpinnerLoader>
+        ) : (
+          <>
+            {charactersList.total === 0 &&
+            searchOptionState.nameStartsWith !== "" ? (
+              <h2>Nenhum personagem encontrado</h2>
+            ) : (
+              <HomeList>
+                {charactersList.results.map((character) => (
+                  <HomeListContent key={character.id}>
+                    <Card {...character} />
+                  </HomeListContent>
+                ))}
+              </HomeList>
+            )}
+          </>
+        )}
+
+        <Pagination
+          totalPages={
+            Math.round(charactersList.total / searchOptionState.limit) || 1
+          }
+        />
+      </HomeWrapper>
+    </>
   );
 };
 

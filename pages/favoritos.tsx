@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import Link from "next/link";
+import Head from "next/head";
 
 import {
   FavoritesWrapper,
@@ -50,42 +51,47 @@ const Favorites = () => {
   }, [favoritesState]);
 
   return (
-    <FavoritesWrapper>
-      <Container>
-        <FavoritesTitle>Favoritos</FavoritesTitle>
-        <FavoritesCount>
-          {favoritesState.length}{" "}
-          {favoritesState.length === 1 ? "encontrado" : "encontrados"}{" "}
-        </FavoritesCount>
+    <>
+      <Head>
+        <title>Meus Favoritos</title>
+      </Head>
+      <FavoritesWrapper>
+        <Container>
+          <FavoritesTitle>Favoritos</FavoritesTitle>
+          <FavoritesCount>
+            {favoritesState.length}{" "}
+            {favoritesState.length === 1 ? "encontrado" : "encontrados"}{" "}
+          </FavoritesCount>
 
-        {loadingCharacters ? (
-          <SpinnerLoader>
-            <div />
-            <div />
-            <div />
-          </SpinnerLoader>
-        ) : null}
+          {loadingCharacters ? (
+            <SpinnerLoader>
+              <div />
+              <div />
+              <div />
+            </SpinnerLoader>
+          ) : null}
 
-        {!loadingCharacters && listCharacters.length === 0 ? (
-          <FavoritesEmptyPage>
-            <p>Você não possui nenhum favorito.</p>
-            <Link href="/" passHref>
-              <FavoritesLink>Voltar para a página inicial</FavoritesLink>
-            </Link>
-          </FavoritesEmptyPage>
-        ) : (
-          <FavoritesList>
-            {listCharacters.map((character) => {
-              return (
-                <FavoritesListContent key={character.id}>
-                  <Card {...character} />
-                </FavoritesListContent>
-              );
-            })}
-          </FavoritesList>
-        )}
-      </Container>
-    </FavoritesWrapper>
+          {!loadingCharacters && listCharacters.length === 0 ? (
+            <FavoritesEmptyPage>
+              <p>Você não possui nenhum favorito.</p>
+              <Link href="/" passHref>
+                <FavoritesLink>Voltar para a página inicial</FavoritesLink>
+              </Link>
+            </FavoritesEmptyPage>
+          ) : (
+            <FavoritesList>
+              {listCharacters.map((character) => {
+                return (
+                  <FavoritesListContent key={character.id}>
+                    <Card {...character} />
+                  </FavoritesListContent>
+                );
+              })}
+            </FavoritesList>
+          )}
+        </Container>
+      </FavoritesWrapper>
+    </>
   );
 };
 
